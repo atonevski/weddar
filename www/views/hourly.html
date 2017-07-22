@@ -1,0 +1,39 @@
+<ion-view>
+  <ion-nav-title><i class="icon ion-clock"></i>&nbsp;48-hour Forecast</ion-nav-title>
+  <ion-pane>
+    <ion-content>
+      <div class='card'><h2 class='text-center'>48-hour Forecast</h2></div>
+      <div class="list card">
+        <div class="item item-divider">
+          <div class="row row-no-padding">
+            <div class="col col-20">Time</div>
+            <div class="col col-12 col-center"><span class='text-center'>&deg;C</span></div>
+            <div class="col col-12 col-center">
+              <span class='text-center'>%<i class="wi wi-day-cloudy-high"></i></span></div>
+            <div class="col col-12 text-center"><span class='text-center'>%<i class="wi wi-humidity"></i></span></div>
+            <div class="col col-12 col-center">UV</div>
+            <div class="col col-12 col-center">O₃</div>
+            <div class="col col-12 col-center"><i class="wi wi-strong-wind"></i></div>
+            <div class="col col-8 col-center"><span class='text-center'>
+              <i class="icon ion-navigate text-center"></i></span></div>
+          </div>
+        </div>
+        <div class="item no-padding" ng-repeat="data in weather.hourly.data">
+          <div class="row row-no-padding">
+            <div class="col col-20 tm-48h"> {{ data.time * 1000 | date: 'MMM-dd HH:mm' }}</div>
+            <div class="col col-12"> {{ data.temperature | number: 2 }}</div>
+            <div class="col col-12 col-center">
+              <span class='text-center'>{{ data.cloudCover * 100 | number: 0 }}</span></div>
+            <div class="col col-12 col-center">
+              <span class='text-center'>{{ data.humidity * 100 | number: 0 }}</span></div>
+            <div class="col col-12 col-center">{{ data.uvIndex }}</div>
+            <div class='col col-12'>{{ data.ozone | number: 0 }}</div>
+            <div class='col col-12'>{{ mps2kmph(data.windSpeed) | number: 1 }}</div>
+            <div class="col col-8 col-center">
+              <i class="wi {{ windArrowFor(data.windBearing) }}"></i></div>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

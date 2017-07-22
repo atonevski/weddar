@@ -1,1 +1,47 @@
 /* Empty. Add your own CSS if you like */
+.temp-tall {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 128px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-align: center;
+}
+
+.no-padding { padding: 0 !important; }
+
+.measurements {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+}
+
+.mheader {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  padding-left: 0.5em !important;
+  padding-right: 0.5em !important;
+}
+
+.mtm {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+}
+.sname {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  /* padding-left: 0.15em !important; */
+}
+.mvalue {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.col-center { text-align: center; }
+.tm-48h {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+}

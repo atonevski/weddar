@@ -1,0 +1,48 @@
+<ion-view>
+  <ion-nav-title><i class="icon ion-calendar"></i>&nbsp;Daily</ion-nav-title>
+  <ion-pane>
+    <ion-content>
+      <div class='card'><h2 class='text-center'>7-day Forecast</h2></div>
+      <div class='card'>
+        <div class='item' ng-repeat="data in weather.daily.data">
+          <ion-item class="item-borderless no-padding">
+            <b>{{ data.time * 1000 | date: 'EEEE, MMMM d yyyy' }}</b>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Summary:</b>&nbsp;<small>{{ data.summary }}</small>
+            &nbsp;<i class='wi {{ weatherIconFor(data.icon) }}'></i>
+            &nbsp;<b>{{ data.temperatureMin | number: 0 }}/{{
+              data.temperatureMax | number: 0 }}</b>&deg;C
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Temperature:</b> &nbsp;<b>{{ data.temperatureMin | number: 0 }}/{{
+              data.temperatureMax | number: 0 }}</b>&deg;C
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Sunrise:</b> {{ data.sunriseTime * 1000 | date : 'HH:mm' }}
+            <i class="wi wi-sunrise"></i>, &nbsp;<b>Sunset:</b>
+            {{ data.sunsetTime * 1000 | date : 'HH:mm' }}
+            <i class="wi wi-sunset"></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Humidity:</b> {{ data.humidity * 100 | number: 0 }}&nbsp;%
+              &nbsp;<i class="wi wi-humidity"></i>, 
+              <b>Pressure:</b> {{ data.pressure | number: 0 }}&nbsp;hPa
+                &nbsp;<i class="wi wi-barometer"></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Cloud cover:</b> {{ data.cloudCover * 100 | number: 0 }}&nbsp;%
+              &nbsp;<i class="wi wi-day-cloudy-high"></i>,&nbsp;
+            <b>UV:</b> {{ data.uvIndex }},
+            <b>O₃:</b> {{ data.ozone | number: 0 }}
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Wind &amp; Direction:</b> {{ mps2kmph(data.windSpeed) | number: 1 }}
+              &nbsp;km/h&nbsp;
+              <i class='wi {{ windArrowFor(data.windBearing) }}'></i>
+          </ion-item>
+        </div>
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

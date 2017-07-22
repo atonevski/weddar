@@ -1,0 +1,79 @@
+<ion-view hide-back-button='true' align-title='center'>
+  <ion-nav-bar class='bar-balanced' align-title="center">
+    <ion-nav-title align="center">Current weather</ion-nav-title>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear">
+        {{ temp }}&nbsp;&deg;C
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-pane>
+    <ion-content>
+      <div class='card'>
+        <div class='item' style='text-align: center; padding-top: 48px;'>
+          <span class="temp-tall">{{ temp }}&deg;C</span>
+        </div>
+        <div class="item measurements">
+          <ion-item class="item-borderless no-padding text-right ">
+            <button class="button button-icon icon ion-refresh button-small balanced"
+                    ng-click="currentWeather()"> Refresh
+            </button>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Weather:</b> <span>{{ weather }}&nbsp;
+              <i class="wi {{ weather ? currentwi() : 'wi-na' }}"></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Latitude, Longitude:</b> <span>{{ lat }}, {{ lng }}
+              &nbsp;<i class='ion-ios-location-outline'></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Pressure:</b> <span>{{ pressure }}&nbsp;hPa
+              &nbsp;<i class="wi wi-barometer"></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Humidity:</b> <span>{{ humidity }}&nbsp;%
+              &nbsp;<i class="wi wi-humidity"></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Cloudness:</b> <span>{{ clouds }}&nbsp;%
+              &nbsp;<i class="wi wi-day-cloudy-high"></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Wind:</b> <span>{{ wind }}&nbsp;km/h {{ winddegRound() }}
+              &nbsp;<i class='wi wi-wind from-{{ winddegRound() }}-deg' 
+                      style='font-size: 120%;'></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Time:</b> <span>{{ time | date: 'medium' }}
+              &nbsp;<i class='wi wi-time-{{ time.getHours()%12 + 1 }}'
+                      style='font-size: 120%;'></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>UV:</b> <span>{{ uv }}</span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>UV Time:</b> <span>{{ uvtime | date: 'medium' }}</span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Sunrise:</b> <span>{{ sunrise | date: 'medium' }}
+              &nbsp;<i class="wi wi-sunrise"></i></span>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Sunset:</b> <span>{{ sunset | date: 'medium' }}
+              &nbsp;<i class="wi wi-sunset"></i></span>
+          </ion-item>
+        </div>
+        <div class="item">
+          <div class="list">
+            <a href="#" class="item item-icon-left">
+              <i class="icon wi wi-night-sleet"></i> Weekend forecast</a>
+            <a href="#" class="item">Extended forecast</a>
+            <a href="#/air" class="item item-icon-left">
+              <i class='icon' style='font-weight: bold;'>☣</i>&nbsp;Air pollution</a>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

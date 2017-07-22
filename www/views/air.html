@@ -1,0 +1,27 @@
+<ion-view>
+  <ion-nav-title>☣&nbsp;Air pollution</ion-nav-title>
+  <!--<ion-content>-->
+  <ion-scroll zooming="true" direction"xy" overflow-scroll='false'
+              min-zoom='1'>
+    <h2>Measurements</h2>
+    <div class="list card">
+      <div class="item item-divider mheader">
+        <div class='row row-no-padding'>
+          <div class='col col-28 mtm'>Time</div>
+          <div class='col col-12 sname text-right'
+               ng-repeat='s in stations'>{{ sname(s) }}</div>
+        </div>
+      </div>
+      <ion-item class="item-borderless no-padding" ng-repeat="m in measurements">
+        <div class='row row-no-padding'>
+          <div class='col col-28 mtm'>{{ m.time }}</div>
+          <div class='col col-12 mvalue text-right' ng-repeat='s in stations'
+               style='color: {{ levelColor(m.values[s]) }};'>
+            {{ m.values[s] | number: 2 }}
+          </div>
+        </div>
+      </ion-item>
+    </div>
+  </ion-scroll>
+  <!--</ion-content>-->
+</ion-view>

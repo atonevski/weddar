@@ -1,0 +1,84 @@
+<ion-view hide-back-button='true' align-title='center'>
+  <ion-nav-bar class='bar-balanced' align-title="center">
+    <ion-nav-title align="center">Current weather</ion-nav-title>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear">
+        <i class='wi {{ weatherIcon() }}' ng-if="weather != null"></i>
+        {{ weather.currently.temperature }}&nbsp;&deg;C
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-pane>
+    <ion-content>
+      <div class='card'>
+        <div class='item' style='text-align: center; padding-top: 48px;'>
+          <span class="temp-tall">{{ weather.currently.temperature | number: 0 }}&deg;C</span>
+        </div>
+        <div class="item measurements">
+          <ion-item class="item-borderless no-padding text-right ">
+            <button class="button button-icon icon ion-refresh button-small balanced"
+                    ng-click="getWeather()"> Refresh
+            </button>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Summary:</b> {{ weather.currently.summary }}
+              &nbsp;<i class='wi {{ weatherIcon() }}'></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Latitude, Longitude:</b> {{ weather.latitude }},
+              {{ weather.longitude }} &nbsp;<i class='ion-ios-location-outline'></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Timezone:</b> {{ weather.timezone }} &nbsp;<i class='ion-earth'></i>,
+            <b>Time:</b> {{ weather.currently.time * 1000 | date: 'HH:mm' }}
+              &nbsp;<i class='ion-clock'></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Humidity:</b> {{ weather.currently.humidity * 100 | number: 0 }}&nbsp;%
+              &nbsp;<i class="wi wi-humidity"></i>, 
+              <b>Pressure:</b> {{ weather.currently.pressure | number: 0 }}&nbsp;hPa
+                &nbsp;<i class="wi wi-barometer"></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Cloud cover:</b> {{ weather.currently.cloudCover * 100 | number: 0 }}&nbsp;%
+              &nbsp;<i class="wi wi-day-cloudy-high"></i>,&nbsp;
+            <b>UV:</b> {{ weather.currently.uvIndex }},
+            <b>O₃:</b> {{ weather.currently.ozone | number: 0 }}
+              <small>(harmful: 100–315)</small>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Wind:</b> {{ mps2kmph(weather.currently.windSpeed) | number: 1 }}
+              &nbsp;km/h&nbsp;, <b>Degrees:</b>
+              {{ weather.currently.windBearing }}&deg;
+              <small>(0&deg;: north, clockwise)</small>
+              <i class='wi {{ windArrow() }}'></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding">
+            <b>Sunrise:</b> {{ weather.daily.data[0].sunriseTime * 1000 | date : 'HH:mm' }}
+            <i class="wi wi-sunrise"></i>, &nbsp;<b>Sunset:</b>
+            {{ weather.daily.data[0].sunsetTime * 1000 | date : 'HH:mm' }}
+            <i class="wi wi-sunset"></i>
+          </ion-item>
+          <ion-item class="item-borderless no-padding"
+                    ng-if='weather.currently.precipProbability > 0'>
+            <b>Precipation:</b> <span>{{ weather.currently.precipIntensity }}&nbsp;cm/h&nbsp;, 
+            <b>Probability:</b> <span>{{ weather.currently.precipProbability * 100 }}&nbsp;%;
+              <i class='wi wi-sprinkle'></i></span>
+          </ion-item>
+        </div>
+        <div class="item">
+          <div class="list">
+            <a href="#/hourly" class="item item-icon-left">
+              <i class="icon ion-clock"></i> Hourly</a>
+            <a href="#/daily" class="item item-icon-left">
+              <i class="icon ion-calendar"></i> Daily</a>
+            <a href="#/map" class="item item-icon-left">
+              <i class="icon wi wi-cloud"></i> Weather map</a>
+            <a href="#/air" class="item item-icon-left">
+              <i class='icon' style='font-weight: bold;'>☣</i>&nbsp;Air pollution</a>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

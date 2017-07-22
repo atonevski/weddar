@@ -1,5 +1,17 @@
 {
   "name": "weddar",
   "app_id": "",
-  "type": "ionic1"
+  "type": "ionic1",
+  "watch": {
+    "sass": ["./scss/**/*.scss"],
+    "coffee": ["./www/coffee/**/*.coffee"]
+  },
+  "gulpStartupTasks": [
+    "coffee",
+    "sass"
+  ],
+  "watchPatterns": [
+    "scss/**/*",
+    "www/coffee/**/*.coffee"
+  ]
 }
