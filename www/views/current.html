@@ -4,7 +4,7 @@
     <ion-nav-buttons side="right">
       <button class="button button-clear">
         <i class='wi {{ weatherIcon() }}' ng-if="weather != null"></i>
-        {{ weather.currently.temperature }}&nbsp;&deg;C
+        {{ weather.currently.temperature | number: 0 }}&nbsp;&deg;C
       </button>
     </ion-nav-buttons>
   </ion-nav-bar>
@@ -23,6 +23,8 @@
           <ion-item class="item-borderless no-padding">
             <b>Summary:</b> {{ weather.currently.summary }}
               &nbsp;<i class='wi {{ weatherIcon() }}'></i>
+            <b>Feels like:</b>
+              {{ weather.currently.apparentTemperature | number: 2 }}&deg;C
           </ion-item>
           <ion-item class="item-borderless no-padding">
             <b>Latitude, Longitude:</b> {{ weather.latitude }},

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.weddar" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Weddar</name>
     <description>Weather forecast and air pollution info</description>
-    <author email="atonevski@gmail.com" href="http://ionicframework.com/">Andreja Tonevski</author>
+    <author email="atonevski@gmail.com" href="https://github.com/atonevski/weddar">Andreja Tonevski</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
